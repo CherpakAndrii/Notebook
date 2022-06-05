@@ -1,0 +1,42 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Notebook.ViewModels;assembly=Notebook"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="{Binding OpenedFile}"
+        x:Class="Notebook.Views.MainWindow">
+    <!--Биндим горячие клавиши-->
+    <Window.KeyBindings>
+        <KeyBinding Gesture="Ctrl+N" Command="{Binding NewFile}" />
+        <KeyBinding Gesture="Ctrl+O" Command="{Binding Open}" />
+        <KeyBinding Gesture="Ctrl+S" Command="{Binding Save}" />
+        <KeyBinding Gesture="Ctrl+Shift+S" Command="{Binding SaveAs}" />
+    </Window.KeyBindings>
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <!--Стандартная разметочка гридом-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--Менюшечка-->
+        <Menu Grid.Row="0" Grid.Column="0">
+            <MenuItem Header="File">
+                <MenuItem Header="New" Command="{Binding NewFile}" />
+                <MenuItem Header="Open" Command="{Binding Open}" />
+                <MenuItem Header="Save" Command="{Binding Save}" />
+                <MenuItem Header="Save As" Command="{Binding SaveAs}" />
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="ChangeTheme" Command="{Binding ChangeTheme}" />
+            </MenuItem>
+        </Menu>
+        <!--Основное текстовое поле-->
+        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding Data}"
+                 AcceptsReturn="True" />
+    </Grid>
+</Window>

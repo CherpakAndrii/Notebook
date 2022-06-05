@@ -1,0 +1,15 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Notebook.ViewModels;assembly=Notebook"
+             xmlns:local="using:Notebook"
+             x:Class="Notebook.App">
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <Application.Styles>
+        <FluentTheme Mode="{Binding AppMode} "/>
+    </Application.Styles>
+</Application>
